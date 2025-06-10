@@ -40,7 +40,7 @@ type SettleRequest = {
 
 const client = createClientSepolia();
 
-app.get("/verify", (req, res) => {
+app.get("/verify", (req: any, res: any) => {
   res.json({
     endpoint: "/verify",
     description: "POST to verify x402 payments",
@@ -51,7 +51,7 @@ app.get("/verify", (req, res) => {
   });
 });
 
-app.post("/verify", async (req, res) => {
+app.post("/verify", async (req: any, res: any) => {
   try {
     const body: VerifyRequest = req.body;
     const paymentRequirements = PaymentRequirementsSchema.parse(body.paymentRequirements);
@@ -66,7 +66,7 @@ app.post("/verify", async (req, res) => {
   }
 });
 
-app.get("/settle", (req, res) => {
+app.get("/settle", (req: any, res: any) => {
   res.json({
     endpoint: "/settle",
     description: "POST to settle x402 payments",
@@ -77,7 +77,7 @@ app.get("/settle", (req, res) => {
   });
 });
 
-app.get("/supported", (req, res) => {
+app.get("/supported", (req: any, res: any) => {
   res.json({
     kinds: [
       {
@@ -89,7 +89,7 @@ app.get("/supported", (req, res) => {
   });
 });
 
-app.post("/settle", async (req, res) => {
+app.post("/settle", async (req: any, res: any) => {
   try {
     const signer = createSignerSepolia(PRIVATE_KEY as `0x${string}`);
     const body: SettleRequest = req.body;
